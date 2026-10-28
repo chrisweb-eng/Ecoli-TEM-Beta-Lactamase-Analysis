@@ -1,0 +1,17 @@
+name: ecoli_amr
+
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+
+dependencies:
+  - python
+  - ncbi-amrfinderplus
+  - blast
+  - ncbi-datasets-cli
+  - mafft
+  - seqkit
+  - quast
+  - sra-tools
+  - unzip

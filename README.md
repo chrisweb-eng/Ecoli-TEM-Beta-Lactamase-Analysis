@@ -187,38 +187,32 @@ These are **variable positions across the selected sequences**, not counts of se
 
 ### 6.1 Connecting sequence variation to amoxicillin resistance
 
-The primary motivation for this project was to investigate sequence variation among TEM beta-lactamase enzymes with established relevance to beta-lactam antibiotic resistance, particularly amoxicillin.
+### 6.1 Connecting sequence variation to amoxicillin resistance
 
-Following identification of the selected TEM genes using **AMRFinderPlus** and subsequent sequence verification, I consulted published experimental studies to understand their biological functions. TEM enzymes belong to the **Ambler class A serine beta-lactamase family** and can hydrolyse the beta-lactam ring of susceptible antibiotics, including amoxicillin. This hydrolysis disrupts the antibiotic's activity against bacterial cell-wall synthesis [6, 8, 9].
+The comparative analysis revealed that the six selected TEM beta-lactamase variants were highly conserved at both nucleotide and protein levels, despite exhibiting variation at specific positions.
+The nucleotide alignment identified **12 variable positions**, while the protein alignment revealed **seven variable amino acid positions**. Subsequent codon-level analysis showed that five variable codon positions exhibited synonymous-only variation, whereas seven exhibited nonsynonymous variation.
+These findings are biologically relevant because previous experimental studies have demonstrated that certain amino acid substitutions in TEM beta-lactamases can influence enzyme activity and antibiotic substrate specificity [8, 9].
 
-This raised a further question: **If these TEM variants belong to the same enzyme family and share a broadly similar resistance mechanism, how do their nucleotide and protein sequences differ, and what might those differences mean biologically?**
-
-To investigate this, I compared the six selected TEM coding sequences at nucleotide, amino acid and codon levels, before interpreting the findings alongside published experimental evidence.
+However, not all amino acid substitutions produce measurable functional changes. The biological importance of a substitution depends on its identity, location and effects on the enzyme.
+The following discussion therefore considers the observed sequence differences alongside published experimental evidence, particularly findings relevant to amoxicillin hydrolysis and TEM beta-lactamase activity.
 
 ### 6.2 Nucleotide variation and its consequences
 
 Multiple sequence alignment revealed **12 variable nucleotide positions** across the six TEM coding sequences, with the remaining **846 positions conserved**.
-
 Although nucleotide variation indicates differences in the DNA sequences, not every nucleotide substitution changes the encoded protein. This observation motivated the translation and comparison of the corresponding amino acid sequences.
 
 The protein alignment identified **seven variable amino acid positions: 37, 90, 102, 162, 235, 236 and 237**.
-
 These findings demonstrate that some of the nucleotide differences were associated with differences in the encoded amino acid sequences.
-
 The seven positions are reported using the coordinates of the protein alignment generated in this project. They should not be interpreted directly as standard Ambler residue numbers without verifying the correspondence between the numbering systems.
 
 ### 6.3 Synonymous and nonsynonymous variation
 
 To understand the relationship between nucleotide and protein-level differences, I performed codon-level analysis.
-
 Of the **12 variable codon positions**, five showed synonymous-only variation, while seven showed nonsynonymous variation.
-
 Synonymous substitutions change the nucleotide sequence without changing the encoded amino acid. For example, the codons `TTT` and `TTC` both encode phenylalanine.
-
 Nonsynonymous substitutions change the encoded amino acid and may influence protein properties, depending on the location and nature of the substitution.
 
 This distinction was particularly relevant to the project because TEM beta-lactamases are enzymes whose activity depends on their three-dimensional structure, catalytic residues and interactions with antibiotic substrates.
-
 However, identifying a nonsynonymous substitution does not automatically establish that it changes enzyme activity or increases antibiotic resistance.
 
 ### 6.4 Relationship to published experimental studies
@@ -258,13 +252,10 @@ This finding is particularly important because it demonstrates that an amino aci
 ### 6.5 What the findings suggest
 
 The comparative analysis demonstrates that the six selected TEM variants share substantial nucleotide and amino acid sequence conservation while exhibiting variation at specific positions.
-
 The published literature provides evidence that certain TEM amino acid substitutions can influence enzyme activity, substrate recognition and antibiotic resistance profiles [8–10].
-
 Together, these observations support the biological relevance of examining nucleotide and protein-level variation among related TEM enzymes.
 
 However, the specific functional effects of the seven variable amino acid positions identified in this project cannot be established from sequence comparison alone.
-
 To determine whether an observed substitution corresponds to a previously characterised functional mutation, its amino acid identity and position must first be verified against the appropriate reference sequence and conventional TEM residue numbering.
 
 Therefore, the findings should be interpreted as a computational characterisation of sequence variation supported by published biological evidence, rather than direct experimental confirmation of altered amoxicillin resistance.

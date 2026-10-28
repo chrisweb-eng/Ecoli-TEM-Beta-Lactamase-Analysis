@@ -187,8 +187,6 @@ These are **variable positions across the selected sequences**, not counts of se
 
 ### 6.1 Connecting sequence variation to amoxicillin resistance
 
-### 6.1 Connecting sequence variation to amoxicillin resistance
-
 The comparative analysis revealed that the six selected TEM beta-lactamase variants were highly conserved at both nucleotide and protein levels, despite exhibiting variation at specific positions.
 The nucleotide alignment identified **12 variable positions**, while the protein alignment revealed **seven variable amino acid positions**. Subsequent codon-level analysis showed that five variable codon positions exhibited synonymous-only variation, whereas seven exhibited nonsynonymous variation.
 These findings are biologically relevant because previous experimental studies have demonstrated that certain amino acid substitutions in TEM beta-lactamases can influence enzyme activity and antibiotic substrate specificity [8, 9].

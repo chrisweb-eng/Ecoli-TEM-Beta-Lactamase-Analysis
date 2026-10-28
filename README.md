@@ -210,6 +210,10 @@ The original genome assembly downloads are kept locally rather than committed to
 
 The analysis scripts are available in [`scripts/`](scripts/), including the four R visualisation scripts and the Python codon-analysis script. The generated alignments, tables and figures are included under [`results/`](results/). Reproducing the workflow requires the relevant software, reference data and compatible tool versions.
 
+For detailed instructions on setting up the software environment, obtaining the input data, reproducing the nucleotide, protein and codon-level analyses, and regenerating the four heatmaps, see the [Reproducibility Guide](REPRODUCIBILITY.md).
+
+The required Conda dependencies are documented in [environment.yml](environment.yml).
+
 ---
 
 ## 📚 8. References and acknowledgements

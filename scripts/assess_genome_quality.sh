@@ -1,83 +1,63 @@
 #!/usr/bin/env bash
+
 set -euo pipefail
 
-# E. coli TEM beta-lactamase comparative genomics
-# Genome assembly quality assessment using QUAST
+# --------------------------------------------------
+# Project: E. coli TEM beta-lactamase analysis
+# Purpose: Assess genome assembly quality with QUAST
+# --------------------------------------------------
 
-cd "$HOME/Ecoli_AMR_Project"
+# Move to the project root directory
+cd "$(dirname "$0")/.." || exit 1
 
-samples=(TEM-1 TEM-2 TEM-3 TEM-10 TEM-24 TEM-57)
-
+# Define directories
+input_dir="data/genomes"
 output_dir="results/quast"
-mkdir -p "$output_dir"
 
-genomes=()
-labels=()
+# Check that QUAST is installed
+if ! command -v quast.py >/dev/null 2>&1; then
+    echo "ERROR: QUAST (quast.py) is not installed or not in PATH."
+    exit 1
+fi
+
+# Check that genome directory exists
+if [[ ! -d "$input_dir" ]]; then
+    echo "ERROR: Genome directory not found: $input_dir"
+    exit 1
+fi
+
+# Find genome assembly FASTA files
+mapfile -d '' genome_files < <(
+    find "$input_dir" -type f \
+        \( -name "*.fna" -o -name "*.fasta" -o -name "*.fa" \) \
+        -print0 | sort -z
+)
+
+# Ensure genome assemblies are available
+if [[ ${#genome_files[@]} -eq 0 ]]; then
+    echo "ERROR: No genome assembly FASTA files found."
+    echo "Check $input_dir before running QUAST."
+    exit 1
+fi
+
+# Create output directory
+mkdir -p "$output_dir"
 
 echo "========================================"
 echo "E. coli genome assembly quality assessment"
 echo "========================================"
-
-# Locate and validate the six genome assemblies
-for sample in "${samples[@]}"; do
-    echo "Checking $sample..."
-
-    genome_dir="data/genomes/$sample/extracted/ncbi_dataset/data"
-
-    if [[ ! -d "$genome_dir" ]]; then
-        echo "ERROR: Missing genome directory for $sample"
-        exit 1
-    fi
-
-    mapfile -t matches < <(
-        find "$genome_dir" -type f -name "*_genomic.fna" | sort
-    )
-
-    if [[ ${#matches[@]} -ne 1 ]]; then
-        echo "ERROR: Expected one genome FASTA for $sample"
-        echo "Found: ${#matches[@]}"
-        exit 1
-    fi
-
-    genome="${matches[0]}"
-
-    if [[ ! -s "$genome" ]]; then
-        echo "ERROR: Empty genome FASTA for $sample"
-        exit 1
-    fi
-
-    genomes+=("$genome")
-    labels+=("$sample")
-
-    echo "Found: $genome"
-done
-
+echo "Genome assemblies found: ${#genome_files[@]}"
+echo "Output directory: $output_dir"
 echo
-echo "Running QUAST on all six assemblies..."
 
-# Create comma-separated labels
-labels_csv=$(IFS=,; echo "${labels[*]}")
-
+# Run QUAST on all selected genome assemblies
 quast.py \
-    "${genomes[@]}" \
-    --labels "$labels_csv" \
-    --threads 4 \
-    --min-contig 500 \
-    --output-dir "$output_dir"
+    "${genome_files[@]}" \
+    -o "$output_dir"
 
 echo
 echo "========================================"
-echo "QUAST analysis completed"
+echo "QUAST analysis completed successfully."
 echo "========================================"
-
-echo "Results directory: $output_dir"
-echo "Combined report: $output_dir/report.tsv"
-echo "HTML report: $output_dir/report.html"
-
-if [[ -s "$output_dir/report.tsv" ]]; then
-    echo
-    echo "Assembly quality summary:"
-    cat "$output_dir/report.tsv"
-else
-    echo "WARNING: QUAST report.tsv not found"
-fi
+echo "Reports saved in: $output_dir"
+echo "Main report: $output_dir/report.html"

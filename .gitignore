@@ -1,0 +1,21 @@
+# Downloaded genome assemblies
+/data/genomes/
+
+# Generated BLAST database indexes
+/reference/tem/TEM_blast_db.*
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# SeqKit index files
+*.seqkit.fai
+
+# R temporary files
+.Rhistory
+.RData
+.Rproj.user/
+
+# System files
+.DS_Store
+Thumbs.db

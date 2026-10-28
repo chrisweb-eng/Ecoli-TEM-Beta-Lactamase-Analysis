@@ -1,0 +1,13 @@
+Codon_Position,Variation_Type,TEM-1_blaTEM-1_Codon,TEM-1_blaTEM-1_AA,TEM-2_Codon,TEM-2_AA,TEM-3_Codon,TEM-3_AA,TEM-10_Codon,TEM-10_AA,TEM-24_Codon,TEM-24_AA,TEM-57_Codon,TEM-57_AA
+6,Synonymous_only,TTT,F,TTC,F,TTC,F,TTT,F,TTC,F,TTT,F
+37,Nonsynonymous_present,CAG,Q,AAG,K,AAG,K,CAG,Q,AAG,K,CAG,Q
+46,Synonymous_only,GAA,E,GAG,E,GAG,E,GAA,E,GAG,E,GAA,E
+90,Nonsynonymous_present,GGT,G,GGT,G,GGT,G,GGT,G,GGT,G,GAT,D
+102,Nonsynonymous_present,GAG,E,GAG,E,AAG,K,GAG,E,AAG,K,GAG,E
+132,Synonymous_only,GCT,A,GCG,A,GCG,A,GCT,A,GCG,A,GCT,A
+158,Synonymous_only,ACT,T,ACC,T,ACC,T,ACT,T,ACC,T,ACT,T
+162,Nonsynonymous_present,CGT,R,CGT,R,CGT,R,AGT,S,AGT,S,CGT,R
+235,Nonsynonymous_present,GCC,A,GCC,A,GCC,A,GCC,A,ACC,T,GCC,A
+236,Nonsynonymous_present,GGT,G,GGT,G,AGT,S,GGT,G,GGT,G,GGT,G
+237,Nonsynonymous_present,GAG,E,GAG,E,GAG,E,AAG,K,AAG,K,GAG,E
+239,Synonymous_only,GGG,G,GGA,G,GGA,G,GGG,G,GGG,G,GGG,G

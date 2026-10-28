@@ -1,0 +1,7 @@
+Sample	Expected_allele	Genomic_copies	Distinct_nucleotide_sequences	Length_bp	Copy_comparison	Representative_available
+TEM-1	blaTEM-1	1	1	858	IDENTICAL	YES
+TEM-2	blaTEM-2	2	1	858	IDENTICAL	YES
+TEM-3	blaTEM-3	2	1	858	IDENTICAL	YES
+TEM-10	blaTEM-10	2	1	858	IDENTICAL	YES
+TEM-24	blaTEM-24	2	1	858	IDENTICAL	YES
+TEM-57	blaTEM-57	1	1	858	IDENTICAL	YES

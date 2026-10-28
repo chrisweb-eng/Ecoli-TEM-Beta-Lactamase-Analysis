@@ -1,0 +1,7 @@
+Sample	Expected_gene	Detected_TEM_genes	Status
+TEM-1	blaTEM-1	blaTEM-1	MATCH
+TEM-2	blaTEM-2	blaTEM,blaTEM-1,blaTEM-2	MATCH
+TEM-3	blaTEM-3	blaTEM-3	MATCH
+TEM-10	blaTEM-10	blaTEM-10	MATCH
+TEM-24	blaTEM-24	blaTEM-24	MATCH
+TEM-57	blaTEM-57	blaTEM-57	MATCH

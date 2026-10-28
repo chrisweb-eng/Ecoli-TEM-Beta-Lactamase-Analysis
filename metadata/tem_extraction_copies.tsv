@@ -1,0 +1,11 @@
+Sample	Allele	Copy	Contig	Start	Stop	Strand	Length_bp	Reference_coverage_pct	Reference_identity_pct	FASTA_file
+TEM-1	blaTEM-1	1	NC_013365.1	113603	114460	-	858	100.0	100.0	results/tem_genes/copies/TEM-1_copy1.fasta
+TEM-2	blaTEM-2	1	DAPYHB010000094.1	1854	2711	+	858	100.0	100.0	results/tem_genes/copies/TEM-2_copy1.fasta
+TEM-2	blaTEM-2	2	DAPYHB010000147.1	24	881	+	858	100.0	100.0	results/tem_genes/copies/TEM-2_copy2.fasta
+TEM-3	blaTEM-3	1	AASUKW010000096.1	4772	5629	+	858	100.0	100.0	results/tem_genes/copies/TEM-3_copy1.fasta
+TEM-3	blaTEM-3	2	AASUKW010000148.1	3956	4813	+	858	100.0	100.0	results/tem_genes/copies/TEM-3_copy2.fasta
+TEM-10	blaTEM-10	1	DAKDGM010000056.1	537	1394	-	858	100.0	100.0	results/tem_genes/copies/TEM-10_copy1.fasta
+TEM-10	blaTEM-10	2	DAKDGM010000103.1	562	1419	+	858	100.0	100.0	results/tem_genes/copies/TEM-10_copy2.fasta
+TEM-24	blaTEM-24	1	DBPNXR010000061.1	1278	2135	-	858	100.0	100.0	results/tem_genes/copies/TEM-24_copy1.fasta
+TEM-24	blaTEM-24	2	DBPNXR010000130.1	2907	3764	+	858	100.0	100.0	results/tem_genes/copies/TEM-24_copy2.fasta
+TEM-57	blaTEM-57	1	JCDNDI010000092.1	150	1007	-	858	100.0	100.0	results/tem_genes/copies/TEM-57_copy1.fasta

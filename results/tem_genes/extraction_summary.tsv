@@ -1,0 +1,2 @@
+Sample	Expected_gene	Contig	Start	Stop	Strand	Length_bp	Status
+TEM-1	blaTEM-1	NC_013365.1	113603	114460	-	858	SUCCESS

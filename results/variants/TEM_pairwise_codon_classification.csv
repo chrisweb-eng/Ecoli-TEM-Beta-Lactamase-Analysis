@@ -1,0 +1,16 @@
+Variant_1,Variant_2,Identical_Codons,Synonymous_Codon_Differences,Nonsynonymous_Codon_Differences,Nucleotide_Differences,Amino_Acid_Differences
+TEM-1_blaTEM-1,TEM-2,280,5,1,6,1
+TEM-1_blaTEM-1,TEM-3,278,5,3,8,3
+TEM-1_blaTEM-1,TEM-10,284,0,2,2,2
+TEM-1_blaTEM-1,TEM-24,277,4,5,9,5
+TEM-1_blaTEM-1,TEM-57,285,0,1,1,1
+TEM-2,TEM-3,284,0,2,2,2
+TEM-2,TEM-10,278,5,3,8,3
+TEM-2,TEM-24,281,1,4,5,4
+TEM-2,TEM-57,279,5,2,7,2
+TEM-3,TEM-10,276,5,5,10,5
+TEM-3,TEM-24,281,1,4,5,4
+TEM-3,TEM-57,277,5,4,9,4
+TEM-10,TEM-24,279,4,3,7,3
+TEM-10,TEM-57,283,0,3,3,3
+TEM-24,TEM-57,276,4,6,10,6

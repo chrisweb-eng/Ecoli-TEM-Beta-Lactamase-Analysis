@@ -1,0 +1,12 @@
+# Exclude generated reports from GitHub language statistics
+results/quast/** linguist-generated=true
+*.html linguist-generated=true
+*.htm linguist-generated=true
+
+# Recognise project scripts
+*.py linguist-language=Python
+*.R linguist-language=R
+*.sh linguist-language=Shell
+
+# Identify documentation
+README.md linguist-documentation=true

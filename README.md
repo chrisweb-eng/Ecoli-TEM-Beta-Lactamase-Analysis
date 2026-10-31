@@ -25,7 +25,7 @@ Antimicrobial resistance makes bacterial infections increasingly difficult to tr
 
 My interest in antimicrobial resistance developed during my undergraduate Medical Laboratory Science research, which investigated bacterial isolates from urine samples of pregnant women with urinary tract infections and their antimicrobial susceptibility patterns. This experience raised questions about the genetic mechanisms underlying differences in bacterial antibiotic resistance.
 
-To explore these questions computationally, I investigated six TEM beta-lactamase variants associated with *Escherichia coli*: **TEM-1, TEM-2, TEM-3, TEM-10, TEM-24 and TEM-57**. Published experimental evidence concerning TEM-mediated beta-lactam resistance, particularly amoxicillin hydrolysis, provided the biological motivation for comparing their nucleotide and protein sequences.
+To explore these questions computationally, I investigated six TEM beta-lactamase variants associated with *Escherichia coli*: **TEM-1, TEM-2, TEM-3, TEM-10, TEM-24 and TEM-57**. Published experimental evidence concerning TEM-mediated beta-lactam resistance, particularly amoxicillin susceptibility, provided the biological motivation for comparing their nucleotide and protein sequences.
 
 Using publicly available genome assemblies, I identified and verified the selected TEM genes, examined nucleotide, amino acid and codon-level variation, and interpreted the findings alongside published research. This was a **comparative sequence analysis**, not an experimental assessment of antibiotic susceptibility.
 
@@ -77,15 +77,18 @@ flowchart TD
     D --> E["SeqKit + MAFFT<br/>Translation and alignments"]
     E --> F["Python<br/>Nucleotide and protein comparisons"]
     F --> G["Python<br/>Codon-level classification"]
-    G --> H["R + ggplot2<br/>Four heatmaps and result tables"]
+    G --> H["R + ggplot2<br/>Four sequence-comparison heatmaps"]
+    G --> I["Literature-informed protein-state heatmap"]
+
     classDef source fill:#DCEEFF,stroke:#2874B2,color:#12344C,stroke-width:2px;
     classDef prep fill:#DCF4EA,stroke:#168B75,color:#123C31,stroke-width:2px;
     classDef analysis fill:#FFF0D4,stroke:#C28A28,color:#513910,stroke-width:2px;
     classDef output fill:#EAE2F7,stroke:#7A57AA,color:#37244C,stroke-width:2px;
+
     class A source;
     class B,C,D,E prep;
     class F,G analysis;
-    class H output;
+    class H,I output;
 ```
 
 ### Genome retrieval and gene identification
@@ -96,7 +99,7 @@ To independently verify the extracted TEM sequences without searching the much l
 
 I subsequently used **BLASTX** to compare the extracted TEM nucleotide sequences against this local database. The six sequences matched their expected TEM reference proteins, providing additional verification alongside AMRFinderPlus identification.
 
-Following verification, I reviewed published experimental studies describing TEM beta-lactamase classification, substrate specificity and amoxicillin hydrolysis [6, 8, 9]. This established the biological rationale for investigating sequence differences among related enzymes with a broadly similar beta-lactam resistance mechanism.
+Following sequence verification, I reviewed published research on TEM beta-lactamase classification and substrate specificity, alongside experimental evidence concerning amoxicillin susceptibility in *Escherichia coli* [6, 8, 10]. This provided biological context for investigating amino acid differences among related TEM enzymes.
 
 ### Sequence alignment and comparisons
 
@@ -104,13 +107,13 @@ I used **MAFFT** to align the six TEM nucleotide sequences and **Python** to ide
 
 I therefore used **SeqKit** to translate the coding sequences into amino acids, followed by a second MAFFT alignment at the protein level. Python was used to identify variable amino acid positions and quantify differences among the six variants.
 
-Comparing the nucleotide and protein results allowed me to investigate which sequence differences changed the encoded amino acids. Published experimental studies were subsequently consulted to assess the known functional relevance of particular TEM substitutions, especially their effects on substrate specificity and beta-lactam hydrolysis [8, 9].
+Comparing the nucleotide and protein results allowed me to investigate which sequence differences changed the encoded amino acids. Published experimental evidence was subsequently examined to assess the potential relevance of selected amino acid substitutions to amoxicillin resistance in *E. coli*, while recognising that sequence differences alone cannot establish resistance phenotypes [10].
 
 ### Codon analysis and visualisation
 
 Using **Python**, I examined the nucleotide sequences in groups of three bases to classify variable codon positions as synonymous or nonsynonymous. Synonymous variation does not change the encoded amino acid, whereas nonsynonymous variation produces an amino acid difference.
 
-I then used **R and ggplot2** to generate four heatmaps illustrating nucleotide variation, amino acid variation and pairwise sequence differences.
+I then used **R and ggplot2** to generate four heatmaps illustrating nucleotide variation, amino acid variation and pairwise sequence differences. An additional literature-informed protein heatmap was generated to visualise the evolutionary-state annotations assigned to selected amino acid residues.
 
 ---
 
@@ -136,7 +139,7 @@ I then used **R and ggplot2** to generate four heatmaps illustrating nucleotide 
 
 The nucleotide alignment identified **12 variable positions** across the six TEM sequences. At the protein level, **seven positions** varied: **37, 90, 102, 162, 235, 236 and 237**.
 
-This distinction is important because nucleotide substitutions do not always change the encoded amino acid. Amino acid variation warrants further investigation because certain substitutions in TEM enzymes have been associated with altered biochemical properties [8, 9].
+This distinction is important because nucleotide substitutions do not always change the encoded amino acid. Amino acid variation warrants further investigation because certain substitutions in TEM enzymes have been associated with altered biochemical properties [8, 10].
 
 **Figure 1 — Nucleotide variation**
 
@@ -145,6 +148,12 @@ This distinction is important because nucleotide substitutions do not always cha
 **Figure 2 — Amino acid variation**
 
 ![Heatmap showing amino acid variation across six TEM variants](results/figures/TEM_amino_acid_variation_heatmap.png)
+
+**Figure 5 — Literature-informed evolutionary-state protein heatmap**
+
+![Literature-informed evolutionary-state heatmap of TEM beta-lactamase protein substitutions](results/figures/TEM_protein_literature_informed_states.png)
+
+Figure 5 illustrates literature-informed amino acid variation across the six TEM beta-lactamase variants, highlighting differences in residue states and their potential biological relevance.
 
 ### 5.2 How different are the variants from one another?
 
@@ -176,26 +185,39 @@ These positions represent variation across the selected sequences, not separate 
 
 The six TEM variants exhibited substantial nucleotide and protein sequence conservation, alongside variation at specific positions. Codon analysis demonstrated that some nucleotide differences were synonymous, whereas others altered the encoded amino acids.
 
-This distinction is biologically relevant because TEM beta-lactamase activity depends on protein structure, catalytic function and interactions with antibiotic substrates. Published studies have shown that certain amino acid substitutions can influence enzyme activity and substrate specificity [8, 9].
+This distinction is biologically relevant because TEM beta-lactamase activity depends on protein structure, catalytic function and interactions with antibiotic substrates. Published studies have shown that certain amino acid substitutions can influence enzyme activity and substrate specificity [8, 10].
 
 However, **not every amino acid substitution produces a measurable functional change**. The significance of each difference depends on its identity, location and biochemical effects. Therefore, sequence variation alone cannot establish whether one TEM variant confers greater amoxicillin resistance than another.
 
 ### 6.2 Comparison with published experimental studies
 
-Published experimental studies provide important context for interpreting variation among the selected TEM enzymes.
+To investigate the biological relevance of the seven variable amino acid positions identified in this study, published experimental evidence concerning TEM beta-lactamase substitutions and amoxicillin resistance in *Escherichia coli* was examined.
 
-| TEM variant(s) | Published biological evidence | Relevance to this project |
-|:--|:--|:--|
-| **TEM-1 and TEM-2** | Well-characterised penicillinases. TEM-2 differs from TEM-1 by Q39K under conventional TEM numbering, without a major change in substrate profile [9, 10]. | Demonstrates that amino acid variation does not necessarily alter antibiotic activity. |
-| **TEM-3 and TEM-24** | Extended-spectrum TEM beta-lactamases investigated in experimental studies, including amoxicillin-related biochemical and susceptibility analyses [8]. | Illustrates how related TEM enzymes can exhibit different substrate profiles. |
-| **TEM-10** | An extended-spectrum TEM enzyme associated with substitutions including R164S and E240K in published characterisations [9, 10]. | Supports investigating substitutions associated with altered substrate specificity, without assuming a particular amoxicillin effect. |
-| **TEM-57** | Bonnet et al. (1999) described a Gly92Asp substitution that did not necessarily alter intrinsic catalytic activity [8]. | Demonstrates that an amino acid difference does not automatically indicate increased resistance. |
+Blázquez et al. (1998) investigated individual TEM substitutions and their combinations in *E. coli* RYC1000. Their experimentally reported amoxicillin minimum inhibitory concentrations (MICs) provide biological context for interpreting selected amino acid differences observed in this computational analysis [10].
 
-These studies establish that TEM sequence variation can have different biological consequences. Some substitutions are associated with altered substrate recognition or enzyme activity, while others may have little measurable effect.
+| Protein alignment position | Corresponding conventional TEM substitution | Individual effect on amoxicillin resistance | Combined effect on amoxicillin resistance |
+|:--|:--|:--|:--|
+| **37** | Q39K | No directly applicable experimental amoxicillin MIC evidence was verified. | No directly applicable combination evidence was verified. |
+| **90** | G92D | No directly applicable experimental amoxicillin MIC evidence was verified. | No directly applicable combination evidence was verified. |
+| **102** | E104K | No directly applicable experimental amoxicillin MIC evidence was verified. | No directly applicable combination evidence was verified. |
+| **162** | R164S | High-level amoxicillin resistance was retained, with an MIC exceeding 2,048 µg/mL [10]. | With A237T, the MIC was 1,024 µg/mL. With E240K, high-level resistance was retained (MIC >2,048 µg/mL) [10]. |
+| **235** | A237T | High-level amoxicillin resistance was retained (MIC 2,048 µg/mL) [10]. | With R164S, the MIC was 1,024 µg/mL; with E240K, it was 2,048 µg/mL. The triple combination R164S + A237T + E240K had an MIC of 1,024 µg/mL [10]. |
+| **236** | G238S | No directly applicable experimental amoxicillin MIC evidence was verified. | No directly applicable combination evidence was verified. |
+| **237** | E240K | High-level amoxicillin resistance was retained, with an MIC exceeding 2,048 µg/mL [10]. | With R164S, high-level resistance was retained (MIC >2,048 µg/mL). With A237T, the MIC was 2,048 µg/mL [10]. |
 
-Importantly, the positions reported in this project are **protein alignment coordinates**, not automatically equivalent to standard Ambler residue numbering. Directly linking an observed substitution to a published functional mutation requires verification of both its amino acid identity and numbering.
+**Biological interpretation**
 
-The published experiments therefore provide biological context for the computational findings, rather than direct evidence of the functional effects of the exact sequences analysed here.
+Published experimental findings indicate that individual TEM beta-lactamase substitutions and their combinations can be associated with different amoxicillin susceptibility profiles in *E. coli*. For example, R164S alone was associated with an MIC exceeding 2,048 µg/mL, whereas the R164S + A237T combination had an MIC of 1,024 µg/mL. The R164S + E240K combination, characteristic of TEM-10, retained an MIC exceeding 2,048 µg/mL [10].
+
+These observations highlight the importance of considering combinations of amino acid substitutions rather than assuming that each substitution has an independent effect on amoxicillin resistance.
+
+**Numbering and experimental limitations**
+
+The alignment positions reported in this project (37, 90, 102, 162, 235, 236 and 237) refer to the 286-amino-acid sequences analysed. Conventional TEM residue numbering differs from these sequential protein coordinates. For example, alignment position 37 corresponds provisionally to Q39K, while position 162 corresponds provisionally to R164S. The proposed correspondences are consistent with published TEM nomenclature but have not been independently confirmed through direct reference-sequence alignment.
+
+The MIC values were obtained from published experiments involving *E. coli* RYC1000 and were not measured for the six genome-derived sequences analysed in this project. An MIC reported as >2,048 µg/mL indicates that the exact inhibitory concentration exceeded the highest concentration reported. The absence of verified experimental evidence for a substitution does not demonstrate an absence of functional effect.
+
+Consequently, these findings provide experimental context for interpreting the observed sequence variation without establishing the amoxicillin resistance phenotypes of the six selected *E. coli* isolates.
 
 ### 6.3 Interpretation and limitations
 
@@ -245,7 +267,7 @@ Ecoli_AMR_Project/
     ├── alignments/           # Nucleotide and protein alignments
     ├── amrfinder/            # AMRFinderPlus reports
     ├── blastx/               # BLASTX reports
-    ├── figures/              # Four heatmaps (PNG and PDF)
+    ├── figures/              # Five heatmaps (PNG and PDF)
     ├── proteins/             # Translated protein sequences
     ├── quast/                # Assembly quality reports
     ├── tem_genes/            # Extracted TEM coding sequences
@@ -267,15 +289,24 @@ The Conda software dependencies are documented in [`environment.yml`](environmen
 ### References
 
 1. Feldgarden M. et al. (2021). AMRFinderPlus and the Reference Gene Catalog facilitate examination of the genomic links among antimicrobial resistance, stress response, and virulence. *Scientific Reports*, 11, 12728. [DOI](https://doi.org/10.1038/s41598-021-91456-0).
+
 2. Gurevich A. et al. (2013). QUAST: quality assessment tool for genome assemblies. *Bioinformatics*, 29, 1072–1075. [DOI](https://doi.org/10.1093/bioinformatics/btt086).
+
 3. Katoh K. and Standley D.M. (2013). MAFFT multiple sequence alignment software version 7: improvements in performance and usability. *Molecular Biology and Evolution*, 30, 772–780. [DOI](https://doi.org/10.1093/molbev/mst010).
+
 4. Camacho C. et al. (2009). BLAST+: architecture and applications. *BMC Bioinformatics*, 10, 421. [DOI](https://doi.org/10.1186/1471-2105-10-421).
+
 5. Shen W. et al. (2016). SeqKit: a cross-platform and ultrafast toolkit for FASTA/Q file manipulation. *PLOS ONE*, 11, e0163962. [DOI](https://doi.org/10.1371/journal.pone.0163962).
+
 6. Bradford P.A. (2001). Extended-spectrum beta-lactamases in the 21st century: characterization, epidemiology, and detection of this important resistance threat. *Clinical Microbiology Reviews*, 14, 933–951. [DOI](https://doi.org/10.1128/CMR.14.4.933-951.2001).
+
 7. [National Center for Biotechnology Information (NCBI)](https://www.ncbi.nlm.nih.gov/).
-8. Bonnet R., De Champs C., Sirot D., Chanal C., Labia R. and Sirot J. (1999). Diversity of TEM mutants in *Proteus mirabilis*. *Antimicrobial Agents and Chemotherapy*, 43, 2671–2677. [DOI](https://doi.org/10.1128/AAC.43.11.2671).
-9. Natural evolution of TEM-1 β-lactamase. *FEMS Microbiology Reviews* (2010). [Article](https://academic.oup.com/femsre/article/34/6/1015/592234).
-10. Rawat D. and Nair D. (2010). Extended-spectrum β-lactamases in Gram Negative Bacteria. *Journal of Global Infectious Diseases*, 2(3), 263–274. [DOI](https://doi.org/10.4103/0974-777X.68531).
+
+8. Natural evolution of TEM-1 β-lactamase. *FEMS Microbiology Reviews* (2010). [Article](https://academic.oup.com/femsre/article/34/6/1015/592234).
+
+9. Rawat D. and Nair D. (2010). Extended-spectrum β-lactamases in Gram Negative Bacteria. *Journal of Global Infectious Diseases*, 2(3), 263–274. [DOI](https://doi.org/10.4103/0974-777X.68531).
+
+10. Blázquez J., Negri M.-C., Morosini M.-I., Gómez-Gómez J.M. and Baquero F. (1998). A237T as a modulating mutation in naturally occurring extended-spectrum TEM-type β-lactamases. *Antimicrobial Agents and Chemotherapy*, 42(5), 1042–1044. [DOI](https://doi.org/10.1128/AAC.42.5.1042).
 
 ### Acknowledgements
 
